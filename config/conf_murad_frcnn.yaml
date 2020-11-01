@@ -1,0 +1,24 @@
+defaults:
+  - dataset: murad
+  - trainer: default_trainer
+  - training: default_training
+  - logging: tensorboard
+  - optimizer: adamw
+  - scheduler: plateau
+  - model: murad_fastrcnn
+  - callbacks: callbacks
+  - data: murad_data
+  - augmentation: murad_augs
+
+general:
+  save_dir: logs/
+  workspace: jamessarmiento
+  project_name: Pavement-Distress-Detection
+  device: cuda
+
+hydra:
+  run:
+    dir: outputs/${now:%Y_%m_%d_%H_%M_%S}
+  sweep:
+    dir: outputs/
+    subdir: ${now:%Y_%m_%d_%H_%M_%S}

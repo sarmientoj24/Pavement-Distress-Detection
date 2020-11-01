@@ -1,0 +1,4 @@
+data:
+  folder_path: ../../data/murad_data
+  num_workers: 2
+  batch_size: 16
