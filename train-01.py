@@ -13,7 +13,7 @@ import torch
 from omegaconf import DictConfig, OmegaConf
 from pytorch_lightning.loggers import TensorBoardLogger, CometLogger
 
-from src.lightning_classes.lightning_wheat import LitWheat
+from src.lightning_classes.lightning_murad import LitMurad
 from src.utils.loggers import JsonLogger
 from src.utils.utils import set_seed, save_useful_info, flatten_omegaconf
 
@@ -30,7 +30,7 @@ def run(cfg: DictConfig) -> None:
     set_seed(cfg.training.seed)
     hparams = flatten_omegaconf(cfg)
 
-    model = LitWheat(hparams=hparams, cfg=cfg)
+    model = LitMurad(hparams=hparams, cfg=cfg)
 
     early_stopping = pl.callbacks.EarlyStopping(**cfg.callbacks.early_stopping.params)
     model_checkpoint = pl.callbacks.ModelCheckpoint(**cfg.callbacks.model_checkpoint.params)

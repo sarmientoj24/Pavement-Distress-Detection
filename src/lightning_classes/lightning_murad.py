@@ -8,7 +8,7 @@ from torch.utils.data import Dataset
 from src.utils.coco_eval import CocoEvaluator
 from src.utils.coco_utils import get_coco_api_from_dataset, _get_iou_types
 from src.utils.get_dataset import get_training_datasets
-from src.utils.get_model import get_wheat_model
+from src.utils.get_model import get_faster_rcnn_model
 from src.utils.utils import load_obj, collate_fn
 
 
@@ -17,7 +17,7 @@ class LitMurad(pl.LightningModule):
         super(LitMurad, self).__init__()
         self.cfg = cfg
         self.hparams: Dict[str, float] = hparams
-        self.model = get_wheat_model(self.cfg)
+        self.model = get_faster_rcnn_model(self.cfg)
         # if hasattr(self.model, 'parameters'):
         #     self.hparams['n_params'] = sum(p.numel() for p in self.model.parameters())
 

@@ -7,7 +7,7 @@ import torch
 from omegaconf import DictConfig
 from pytorch_lightning.loggers import CometLogger, TensorBoardLogger
 
-from src.lightning_classes.lightning_wheat import LitWheat
+from src.lightning_classes.lightning_murad import LitMurad
 from src.utils.get_dataset import get_test_dataset
 from src.utils.utils import set_seed, format_prediction_string, collate_fn
 
@@ -23,7 +23,7 @@ def predict(cfg: DictConfig) -> None:
     test_dataset = get_test_dataset(cfg)
     path = r'wheat\outputs\2020_05_06_09_32_36\saved_models\_ckpt_epoch_0.ckpt'
 
-    model = LitWheat.load_from_checkpoint(checkpoint_path=path)
+    model = LitMurad.load_from_checkpoint(checkpoint_path=path)
     model.eval()
     test_loader = torch.utils.data.DataLoader(
         test_dataset,
